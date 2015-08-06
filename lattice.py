@@ -50,28 +50,6 @@ class Lattice():
                     r = array(r)
                     h_r = array(h_r)
                     if all(latticePoint2 - latticePoint == r):
-                        for i in range(len(h_r)):
-                            for j in range(i+1, len(h_r), 1):
-                                translation = array([latticePoint+lb[i,:], latticePoint+r+lb[j,:]])
-                                if h_r[i, j] in knownHoppingEnergies:
-                                    self.hoppings[index(knownHoppingEnergies, h_r[i, j])].append(translation)
-                                else:
-                                    knownHoppingEnergies.append(h_r[i, j])
-                                    self.hoppings.append(list())
-                                    self.hoppings[-1].append(translation)
-
-    def generateHoppings2(self, hopping):
-        knownHoppingEnergies =  list()
-        lb = self.latticeBasis
-
-        for a in range(len(self.latticePoints)):
-            latticePoint = self.latticePoints[a]
-            for b in range(a, len(self.latticePoints)):
-                latticePoint2 = self.latticePoints[b]
-                for r, h_r in hopping.items():
-                    r = array(r)
-                    h_r = array(h_r)
-                    if all(latticePoint2 - latticePoint == r):
                         for i, j in product(range(len(h_r)), range(len(h_r))):
                             translation = array([latticePoint+lb[i,:], latticePoint+r+lb[j,:]])
                             if h_r[i, j] in knownHoppingEnergies and h_r[i, j] != 0:
