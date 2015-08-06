@@ -71,7 +71,6 @@ xlimextra = -offset
 pyro.generatePoints([2,2,2])
 pyro.generateHoppings(h)
 
-set_mpl()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection = '3d')
 ax.set_aspect('equal')
